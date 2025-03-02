@@ -48,7 +48,7 @@ def scrape_website(url):
     # TODO: Make sure that soup was successful
     soup = BeautifulSoup(html, "lxml")
 
-    page_content = PageContent()
+    page_content = PageContent(url=url)
 
     if soup.title:
         title = soup.title.string
@@ -58,12 +58,10 @@ def scrape_website(url):
             raise NotFound()
         page_content.title = title
 
-    headings = soup.find_all("h1", "h2", "h3")
     page_content.headings = [heading.text.strip() for heading in soup.find_all(['h1', 'h2', 'h3'])]
+    page_content.paragraphs = [paragraph.text.strip() for paragraph in soup.find_all('p')]
 
     return page_content
-
-
 
 if __name__ == "__main__":
     # Example usage

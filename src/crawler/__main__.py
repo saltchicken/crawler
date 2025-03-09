@@ -1,5 +1,5 @@
-from scraper import scrape_website
-from llm.api import query_ollama
+from .scraper import scrape_website
+from .llm.api import query_ollama
 
 
 def main():

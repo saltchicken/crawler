@@ -7,7 +7,7 @@ from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 from loguru import logger
 
-from scraper.models import PageContent
+from .models import PageContent
 
 def check_robots_txt(url):
     parsed_url = urlparse(url)
